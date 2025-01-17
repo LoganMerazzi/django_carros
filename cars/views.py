@@ -5,11 +5,15 @@ from cars.models import Car
 
 
 def cars_view(request):
-    contexto = Car.objects.filter(brand__name='fiat')
-    print(contexto)
+    cars = Car.objects.all()
+    print(cars)
+    #contexto = Car.objects.filter(brand__name='fiat')
+    #print(contexto)
     
     return render(
         template_name='cars.html', 
         request=request, 
-        context={'cars': contexto}
+        context={'cars': cars}
+        #context={'cars': contexto}
+        
     )

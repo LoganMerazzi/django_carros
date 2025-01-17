@@ -1,0 +1,17 @@
+<html>
+    <head>
+        <title>Meus carros</title>
+    </head>
+    {% block content %}
+    <body>
+        <h1> Template de carros...</h1>
+        <ul>
+            {% for car in cars %}
+            <li>
+                {{ car.brand }} - {{ car.model }}
+            </li>
+            {% endfor %}
+        </ul>
+    </body>
+    {% endblock %}
+</html>

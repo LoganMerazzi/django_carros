@@ -11,7 +11,7 @@ def cars_view(request):
     print(request.GET.get('search'))
 
     # Para retorar tudo (select * from...)
-    cars = Car.objects.all()
+    cars = Car.objects.all().order_by('model_year') # para ordernar de forma descrescente, colocar o sinal '-' no nome da coluna a ser ordenada.
     #print(cars)
     
     # Para realizar um filtro.
@@ -23,7 +23,7 @@ def cars_view(request):
     # if para validar se algo foi preenchido com o parametro search na url
     if modelo:
         # Filtrando usando coringas (model like '%%') - case insensitive - apenas considera acentuação
-        cars = Car.objects.filter(model__contains=modelo)
+        cars = Car.objects.filter(model__contains=modelo).order_by('model')
     
     # Filtrando dados através de uma FK:
     #contexto = Car.objects.filter(brand__name='Fiat')

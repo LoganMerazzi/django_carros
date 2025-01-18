@@ -5,15 +5,35 @@ from cars.models import Car
 
 
 def cars_view(request):
+    
+    print(request)
+    print(request.GET)
+    print(request.GET.get('search'))
+
+    # Para retorar tudo (select * from...)
     cars = Car.objects.all()
+    #print(cars)
+    
+    # Para realizar um filtro.
+    # Filtrando diretamente a tabela - case sensitive
+    #contexto = Car.objects.filter(model='Gol')
+
+    modelo = request.GET.get('search')
+    
+    # if para validar se algo foi preenchido com o parametro search na url
+    if modelo:
+        # Filtrando usando coringas (model like '%%') - case insensitive - apenas considera acentuação
+        cars = Car.objects.filter(model__contains=modelo)
+    
+    # Filtrando dados através de uma FK:
+    #contexto = Car.objects.filter(brand__name='Fiat')
     print(cars)
-    #contexto = Car.objects.filter(brand__name='fiat')
-    #print(contexto)
+    
+    
     
     return render(
         template_name='cars.html', 
         request=request, 
         context={'cars': cars}
-        #context={'cars': contexto}
         
     )

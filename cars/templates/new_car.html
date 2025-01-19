@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+    <form method="post" enctype="multipart/form-data">
+        <!-- rever a aula 55 e a documentação para entender a linha abaixo -->
+        {% csrf_token %}
+
+        <table>
+            {{ new_car_form.as_table }}
+        </table>
+        
+        <input type="submit" class="btnSalvar" value="Salvar">
+
+    </form>
+
+{% endblock %}

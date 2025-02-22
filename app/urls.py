@@ -23,12 +23,12 @@ from accounts.views import register_view, login_view, logout_view
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('cars/', CarsListView.as_view(), name='car_list'),
-    path('new_car/', NewCarCreateView.as_view(), name='new_car'),
-    path('car/<int:pk>/', CarDetailView.as_view(), name='car_detail'),
     path('register/',register_view, name='register'),
     path('login/',login_view, name='login'),
     path('logout/',logout_view, name='logout'),
+    path('cars/', CarsListView.as_view(), name='car_list'),
+    path('new_car/', NewCarCreateView.as_view(), name='new_car'),
+    path('car/<int:pk>/', CarDetailView.as_view(), name='car_detail'),
 ]
 
 if settings.DEBUG:

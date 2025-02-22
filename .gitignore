@@ -3,3 +3,4 @@ media/cars
 db.sqlite3
 *pycache*
 suporte
+.env
